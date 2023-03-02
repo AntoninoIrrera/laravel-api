@@ -20,4 +20,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-Route::get('/post',[ApiPostController::class, 'index'])->name('api.index');
+Route::get('/project',[ApiPostController::class, 'index'])->name('api.index');
