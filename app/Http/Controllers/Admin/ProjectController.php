@@ -83,7 +83,7 @@ class ProjectController extends Controller
         $newProject = new Project();
         $newProject->fill($data);
         $newProject->save();
-        $newProject->technologies()->sync($data['technologies']);
+        $newProject->technologies()->sync($data['technologies'] ?? []);
 
         return redirect()->route('admin.project.show',$newProject->id)->with('message',"l'elemento è stato creato correttamente");
     }
@@ -148,7 +148,7 @@ class ProjectController extends Controller
 
 
         $project->update($data);
-        $project->technologies()->sync($data['technologies']);
+        $project->technologies()->sync($data['technologies'] ?? []);
 
         return redirect()->route('admin.project.show', $project->id)->with('message', "l'elemento è stato modificato correttamente");
     }
