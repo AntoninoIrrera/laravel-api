@@ -6,11 +6,12 @@ use App\Http\Controllers\Controller;
 use App\Models\Project;
 use Illuminate\Http\Request;
 
-class PostController extends Controller
+class ProjectController extends Controller
 {
-    public function index(){
+    public function index()
+    {
 
-        $projects = Project::with('type','technologies')->paginate(10);
+        $projects = Project::with('type', 'technologies')->paginate(10);
 
         return response()->json([
             'succes' => true,
