@@ -4,9 +4,11 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\TechnologyController;
 use App\Http\Controllers\Admin\TypesController;
+use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\Guest\PageController as GuestPageController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use PHPUnit\TextUI\XmlConfiguration\Group;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,6 +51,12 @@ Route::middleware(['auth', 'verified','checkRole'])
     Route::resource('project',ProjectController::class);
     Route::resource('type', TypesController::class);
     Route::resource('technology', TechnologyController::class);
+
+    Route::middleware(['checkRoleAdmin'])->group(function(){
+
+        Route::resource('users', UsersController::class);
+    });
+
 });
 
 
