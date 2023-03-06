@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 
 Route::get('/project',[GuestPageController::class, 'index'])->name('guest.index');
 Route::get('/project/{project}', [GuestPageController::class, 'show'])->name('guest.show');
@@ -41,7 +41,7 @@ Route::middleware('auth')->group(function () {
 });
 
 
-Route::middleware(['auth', 'verified'])
+Route::middleware(['auth', 'verified','checkRole'])
     ->name('admin.')
     ->prefix('admin')
     ->group(function () {
