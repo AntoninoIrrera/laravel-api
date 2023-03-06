@@ -22,6 +22,7 @@ class UserSeeder extends Seeder
         $Michelangelo->name = 'Michelangelo';
         $Michelangelo->email = 'michelangelo007@gmail.com';
         $Michelangelo->password = Hash::make('michelangelo123');
+        $Michelangelo->role_id = 1;
         $Michelangelo->save();
 
 
@@ -31,6 +32,7 @@ class UserSeeder extends Seeder
             $newUSer->name = $faker->name();
             $newUSer->email = $faker->email();
             $newUSer->password = Hash::make($faker->password());
+            $newUSer->role_id = $faker->numberBetween(2,3);
             $newUSer->save();
 
         }
