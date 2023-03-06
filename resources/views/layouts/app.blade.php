@@ -47,15 +47,26 @@
                             <a class="nav-link" href="{{url('/') }}">{{ __('Home') }}</a>
                         </li>
                         @if(Auth::check())
+                        @if(Auth::user()->role->name != 'user')
                         <li class="nav-item">
                             <a class="nav-link" href="{{url('/admin/project') }}">{{ __('projects') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{url('/admin/type') }}">{{ __('types') }}</a>
+                            <a class="nav-link" href="{{url('/admin/type') }}">{{ __('Types') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{url('/admin/technology') }}">{{ __('technologies') }}</a>
+                            <a class="nav-link" href="{{url('/admin/technology') }}">{{ __('Technologies') }}</a>
                         </li>
+                        @if(Auth::user()->role->name != 'menager')
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{url('/admin/users') }}">{{ __('Users') }}</a>
+                        </li>
+                        @endif
+                        @else
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{url('/project') }}">{{ __('projects') }}</a>
+                        </li>
+                        @endif
                         @else
                         <li class="nav-item">
                             <a class="nav-link" href="{{url('/project') }}">{{ __('projects') }}</a>

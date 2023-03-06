@@ -50,6 +50,7 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{url('/') }}">{{ __('Home') }}</a>
                         </li>
+                        @if(Auth::user()->role->name != 'user')
                         <li class="nav-item">
                             <a class="nav-link" href="{{url('/admin/project') }}">{{ __('projects') }}</a>
                         </li>
@@ -59,6 +60,12 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{url('/admin/technology') }}">{{ __('Technologies') }}</a>
                         </li>
+                        @if(Auth::user()->role->name != 'menager')
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{url('/admin/users') }}">{{ __('Users') }}</a>
+                        </li>
+                        @endif
+                        @endif
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -75,7 +82,7 @@
                         @endif
                         @else
                         <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: {{Auth::user()->role->color}}" v-pre>
                                 {{ Auth::user()->name }}
                             </a>
 
